@@ -22,18 +22,21 @@
     group: "{{ airflow_group }}"
     state: directory
   with_items: "{{ airflow_skeleton_paths }}"
+  become: true
 
 - name: Airflow | Copy profile.d file
   template:
     src: airflow-profile.d-file.j2
     dest: "/etc/profile.d/airflow.sh"
     mode: 0644
+  become: true
 
 - name: Airflow | Installing dependencies
   apt:
     pkg: "{{ airflow_required_libs }}"
     state: present
     update_cache: true
+  become: true
 
 # See https://airflow.apache.org/docs/apache-airflow/stable/installation.html#installation-tools
 - name: Airflow | Install pip "{{ airflow_pip_version }}" version

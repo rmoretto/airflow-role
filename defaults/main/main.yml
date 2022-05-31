@@ -114,7 +114,7 @@ airflow_default_required_libs:
   - python3-pip
   - python3-setuptools
   - python-pip
-  # - acl
+  - acl
 # Airflow 2.0 system level requirements https://airflow.apache.org/docs/apache-airflow/stable/installation.html#system-dependencies
   - freetds-bin
   - krb5-user
