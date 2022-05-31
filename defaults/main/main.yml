@@ -133,10 +133,15 @@ airflow_additional_required_libs: []
 
 airflow_required_libs: "{{ airflow_default_required_libs + airflow_additional_required_libs }}"
 
-# airflow_required_python_packages:
-  # - { name: SQLAlchemy, version: 1.3.23 } # v1.4 Breaks airflow installation
+airflow_default_python_packages:
+  - { name: markupsafe }
+
+airflow_required_python_packages: []
+#   - { name: SQLAlchemy, version: 1.3.23 } # v1.4 Breaks airflow installation
 #   Version is not mandatory
 #   - {name: pyasn1, version: 0.4.4}
+
+airflow_required_libs: "{{ airflow_default_python_packages + airflow_required_python_packages }}"
 
 # Admin user
 airflow_admin_users:
