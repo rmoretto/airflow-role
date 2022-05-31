@@ -20,6 +20,7 @@
     owner: root
     group: root
   tags: airflow-gunicorn-logrotate
+  become: true
 
 - name: Airflow | Copy webserver_config.py file
   template:
