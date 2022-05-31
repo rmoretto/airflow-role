@@ -23,6 +23,8 @@
   become: true
 
 - name: Airflow | Copy webserver_config.py file
+  become: true
+  become_user: "{{ airflow_user }}"
   template:
     src: webserver_config.j2
     dest: "{{ airflow_app_home }}/webserver_config.py"
@@ -39,6 +41,8 @@
   tags: airflow-webserver-config-py
 
 - name: Airflow | Copy basic airflow config file (< 2.0)
+  become: true
+  become_user: "{{ airflow_user }}"
   template:
     src: "{{ airflow_config_template_path }}"
     dest: "{{ airflow_conf_path }}/airflow.cfg"
@@ -55,6 +59,8 @@
   tags: airflow-cfg
 
 - name: Airflow | Copy basic airflow config file (>= 2.0)
+  become: true
+  become_user: "{{ airflow_user }}"
   template:
     src: "{{ airflow_config_template_path_v2 }}"
     dest: "{{ airflow_conf_path }}/airflow.cfg"
@@ -101,6 +107,8 @@
   tags: airflow-db-init
 
 - name: Airflow | Copy extra airflow config files (provided by playbooks)
+  become: true
+  become_user: "{{ airflow_user }}"
   copy:
     src: "{{ item }}"
     dest: "{{ airflow_conf_path }}/{{ item | basename }}"
@@ -117,6 +125,8 @@
   tags: airflow-extra-config
 
 - name: Airflow | Copy extra airflow config templates (provided by playbooks)
+  become: true
+  become_user: "{{ airflow_user }}"
   template:
     src: "{{ item }}"
     dest: "{{ airflow_conf_path }}/{{ item | basename }}"
