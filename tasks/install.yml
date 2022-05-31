@@ -168,5 +168,6 @@
     dest: "/lib/systemd/system/{{ item.value.service_name }}.service"
     mode: 0644
   notify: restart {{ item.value.service_name }}
+  become: true
   with_dict: "{{ airflow_services }}"
   when: item.value.enabled
