@@ -26,7 +26,7 @@
       - --lastname
       - "{{ item.lastname }}"
       - --role
-      - "{{ item.role }}"
+      - "{{ item.role | default('Admin') }}"
       - --email
       - "{{ item.email }}"
   no_log: true
