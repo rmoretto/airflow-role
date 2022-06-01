@@ -141,7 +141,7 @@ airflow_required_python_packages: []
 #   Version is not mandatory
 #   - {name: pyasn1, version: 0.4.4}
 
-airflow_required_libs: "{{ airflow_default_python_packages + airflow_required_python_packages }}"
+airflow_final_python_packages: "{{ airflow_default_python_packages + airflow_required_python_packages }}"
 
 # Admin user
 airflow_admin_users:
