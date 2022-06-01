@@ -27,6 +27,14 @@ KillSignal=SIGINT
 Restart=always
 RestartSec=5s
 PrivateTmp={{ airflow_private_tmp }}
+Environment="SCHEDULER_RUNS={{ airflow_scheduler_runs }}"
+Environment="AIRFLOW_HOME={{ airflow_app_home }}"
+Environment="AIRFLOW_CONFIG={{ airflow_conf_path }}/airflow.cfg"
+Environment="PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:{{ airflow_app_home }}/bin"
+Environment="HOSTALIASES=/etc/host.aliases"
+{% for extra_var in airflow_environment_extra_vars %}
+Environment="{{ extra_var.name }}={{ extra_var.value }}"
+{% endfor %}
 
 [Install]
 WantedBy=multi-user.target

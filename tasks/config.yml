@@ -63,7 +63,7 @@
   become_user: "{{ airflow_user }}"
   template:
     src: "{{ airflow_config_template_path_v2 }}"
-    dest: "{{ airflow_app_home }}/airflow.cfg"
+    dest: "{{ airflow_conf_path }}/airflow.cfg"
     owner: "{{ airflow_user }}"
     group: "{{ airflow_group }}"
     mode: 0640
