@@ -46,9 +46,11 @@
   when: airflow_pip_version is defined
 
 - name: Airflow | Install virtualenv
+  become: true
   pip:
     executable: "{{ airflow_pip_executable }}"
     name: virtualenv
+    umask: "0022"
 
 - name: Airflow | Check if exists virtualenv
   stat:
