@@ -163,6 +163,7 @@
     mode: 0644
     owner: "{{ airflow_user }}"
     group: "{{ airflow_group }}"
+  become: true
 
 - name: Airflow | Copy Daemon scripts
   template:
